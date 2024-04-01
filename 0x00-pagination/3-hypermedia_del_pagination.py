@@ -40,4 +40,35 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-        pass
+        """ This is the hyper index function
+        @index: The index to be searched for
+        @page_size: the size of the list returned
+        Return: Returns a dictionary of values
+        """
+        indices = self.indexed_dataset()
+        assert isinstance(index, int) and index < len(indices) - 1
+        data_partition = []
+        page = 0
+        data_pointer = index
+        next_index = None
+        while page < page_size:
+            value = indices.get(page + index, None)
+            page = page + 1
+            if value:
+                data_partition.append(value)
+                data_pointer = data_pointer + 1
+
+        while data_pointer < len(indices):
+            value = indices.get(data_pointer, None)
+            if value:
+                next_index = data_pointer
+                break
+            data_pointer = data_pointer + 1
+
+        hyper_index = {}
+        hyper_index['index'] = index
+        hyper_index['next_index'] = next_index
+        hyper_index['page_size'] = page_size
+        hyper_index['data'] = data_partition
+
+        return (hyper_index)
