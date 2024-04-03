@@ -33,5 +33,4 @@ class LRUCache(BaseCaching):
         if key is not None:
             self.log[key] = datetime.now()
             return (self.cache_data[key])
-        if key is None or key not in self.cache_data:
-            return None
+        return None
