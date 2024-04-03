@@ -15,7 +15,7 @@ class BasicCache(BaseCaching):
         @item: The item to be inserted
         Return: Returns nothing
         """
-        if key is not None and  item is not None:
+        if key is not None and item is not None:
             self.cache_data[key] = item
 
     def get(self, key):

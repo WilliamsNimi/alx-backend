@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ This is a basic cache class"""
-BaseCaching = __import__('base_caching').BaseCaching
 from datetime import datetime
+BaseCaching = __import__('base_caching').BaseCaching
 
 
 class LRUCache(BaseCaching):
@@ -21,7 +21,7 @@ class LRUCache(BaseCaching):
             lru_key = min(self.log, key=self.log.get)
             self.cache_data.pop(lru_key)
             print("DISCARD: ".format(lru_key))
-        if key is not None and  item is not None:
+        if key is not None and item is not None:
             self.cache_data[key] = item
             self.log[key] = datetime.now()
 
