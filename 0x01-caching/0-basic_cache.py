@@ -25,4 +25,6 @@ class BasicCache(BaseCaching):
         """
         if key is not None:
             return (self.cache_data[key])
+        if !(key in self.cache_data.keys()):
+            return None
         return None
