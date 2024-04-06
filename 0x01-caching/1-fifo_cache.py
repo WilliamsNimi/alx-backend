@@ -15,12 +15,12 @@ class FIFOCache(BaseCaching):
         @item: The item to be inserted
         Return: Returns nothing
         """
+        if key is not None and item is not None:
+            self.cache_data[key] = item
         if len(list(self.cache_data.keys())) > BaseCaching.MAX_ITEMS:
             first_key = list(self.cache_data.keys())[0]
             self.cache_data.pop(first_key)
             print("DISCARD: {}".format(first_key))
-        if key is not None and item is not None:
-            self.cache_data[key] = item
 
     def get(self, key):
         """ This function gets the item from a cache using the key
