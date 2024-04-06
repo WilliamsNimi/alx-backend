@@ -21,7 +21,7 @@ class MRUCache(BaseCaching):
             self.cache_data[key] = item
             self.log[key] = datetime.now()
             if len(list(self.cache_data.keys())) > BaseCaching.MAX_ITEMS:
-                mru_key = max(self.log, key=self.log.get) if len(self.log) > 0 else None
+                mru_key = max(self.log, key=self.log.get)
                 self.cache_data.pop(mru_key)
                 self.log.pop(mru_key)
                 print("DISCARD: {}".format(mru_key))
