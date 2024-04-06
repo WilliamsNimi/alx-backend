@@ -23,7 +23,7 @@ class MRUCache(BaseCaching):
             if len(list(self.cache_data.keys())) > BaseCaching.MAX_ITEMS:
                 mru_key = max(self.log, key=self.log.get)
                 self.cache_data.pop(mru_key)
-                self.log.pop(mru_ke)y
+                self.log.pop(mru_key)
                 print("DISCARD: {}".format(mru_key))
 
     def get(self, key):
