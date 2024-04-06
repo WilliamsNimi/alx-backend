@@ -23,8 +23,6 @@ class BasicCache(BaseCaching):
         @key: The key to search with
         Return: Returns the value linked to the key
         """
-        if key is not None:
-            return (self.cache_data[key])
-        if !(key in self.cache_data.keys()):
+        if key is None or key not in self.cache_data.keys():
             return None
-        return None
+        return (self.cache_data[key])
