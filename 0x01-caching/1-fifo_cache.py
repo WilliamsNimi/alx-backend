@@ -15,7 +15,7 @@ class FIFOCache(BaseCaching):
         @item: The item to be inserted
         Return: Returns nothing
         """
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+        if len(list(self.cache_data.keys())) > BaseCaching.MAX_ITEMS:
             first_key = list(self.cache_data.keys())[0]
             self.cache_data.pop(first_key)
             print("DISCARD: {}".format(first_key))
