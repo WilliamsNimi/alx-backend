@@ -20,10 +20,11 @@ class LRUCache(BaseCaching):
         if key is not None and item is not None:
             self.cache_data[key] = item
             self.log[key] = datetime.now()
-        if len(list(self.cache_data.keys())) > BaseCaching.MAX_ITEMS:
-            lru_key = min(self.log, key=self.log.get)
-            self.cache_data.pop(lru_key)
-            print("DISCARD: {}".format(lru_key))
+            if len(list(self.cache_data.keys())) > BaseCaching.MAX_ITEMS:
+                lru_key = min(self.log, key=self.log.get)
+                self.cache_data.pop(lru_key)
+                self.log.pop(lru_key)
+                print("DISCARD: {}".format(lru_key))
 
     def get(self, key):
         """ This function gets the item from a cache using the key
